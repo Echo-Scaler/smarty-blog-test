@@ -37,11 +37,17 @@ foreach ($dirs as $dir) {
 }
 
 // Site Configuration
-define('SITE_NAME', 'My Blog Smarty Php - Myanmar');
+define('SITE_NAME', 'My Blog - Myanmar');
+
+// Application Settings
+define('DEBUG_MODE', true); // Set to false for production
+
+// POSTS PER PAGE for Pagination
+define('POSTS_PER_PAGE', 3); // <<< Add this line
 
 // Auto-detect URL
 if (php_sapi_name() === 'cli-server') {
-    define('SITE_URL', 'http://localhost:8000/public');
+    define('SITE_URL', 'http://localhost:8000/');
 } else {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
     $host = $_SERVER['HTTP_HOST'];
@@ -49,5 +55,3 @@ if (php_sapi_name() === 'cli-server') {
     $base = ($script === '/' || $script === '\\') ? '/' : rtrim($script, '/') . '/';
     define('SITE_URL', $protocol . $host . $base);
 }
-
-define('DEBUG_MODE', true);
